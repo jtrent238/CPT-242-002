@@ -1,0 +1,61 @@
+Database Terms
+_________________________________________
+
+1) Data - anything we store in a database
+2) Database - What we store our data in
+3) Relation Database - stores data in tables
+4) DMBS - How we manage a database using code
+5) RDMBS - How we control the data using code in a relational database
+6) Null - No value / Empty value - No data in that specific field
+7) Anomalies - Errors within our data integrity, if trying to update 1 table and it updates 10.
+8) Integrity - Helps protect agaisnt anomalies
+	Entity - Uniquness among the tables
+	Domain - A column within a table has all the expected values, a phone number is gona be numbers not text.
+	Referential - Keeps the connections between tables using keys. Like foreign and primary keys
+
+9) Entity - anything we store data about
+10) Attributes - the information we store about the entity
+11) Relation - a table / a relation of tables
+12) Tuple - a row / all of the attributes of a specific entity
+13) Table - a physical representation of a relation / where we store and organize data
+14) Rows - a specific individual entry within a table / part of table
+15) Columns - a specific attribute of an entity / part of table
+16) File - another name for table 
+17) Record - another name for row
+18) Field - another name for column
+19) Value - a specific value we put into a column (attribute)
+20) Entry - a row
+21) Database Design - the process of designing a table to remove anomalies and have data integrity
+22) Schema - drawn out / physical structure of a table
+23) Normalization - steps to follow to help create the best database design / process
+24) Naming Conventions - Consistency of naming , drawing a certian way
+25) Keys - how to make connections between tables
+
+26) SQL (Structured Query Language) - computer program language
+27) DDL (Data Definition Language) - commands that define the structure in a database.
+- DDL statements create, modify, and remove database objects such as tables, indexes, and users.
+27) DML (Data Manipulation Language) - sublanguage of SQL, used for adding(inserting), deleting, and modifying(updating) data in a database
+28) SQL Keyword - Select
+29) Frontend - is what the user see's, client comunicates with server
+30) Backend - is the complicated code behind the scenes, server side
+31) Client - user accessing the database
+32) Server - serves instances of the data to the client
+33) Serverside Scripting Language
+34) Joins - connects multiples tables to create a new table
+35) Atomic Value - the value stores one thing
+- FirstName, MiddleName, LastName - single values of one attribute (Name)
+
+36) One-to-Many Relationship 
+- In systems analysis, a one-to-many relationship is a type of cardinality that refers to the relationship between two entities 
+A and B in which an element of A may be linked to many elements of B, but a member of B is linked to only one element of A. 
+For instance, think of A as books, and B as pages.
+
+37) One-to-One Relationship
+- In systems analysis, a one-to-one relationship is a type of cardinality that refers to the relationship between two entities 
+A and B in which one element of A may only be linked to one element of B, and vice versa. 
+In mathematical terms, there exists a bijective function from A to B. 
+
+38) Many-to-Many Relationship
+- In systems analysis, a many-to-many relationship is a type of cardinality that refers to the relationship between two entities 
+A and B in which A may contain a parent instance for which there are many children in B and vice versa. 
+For example, think of A as Authors, and B as Books. Wikipedia
