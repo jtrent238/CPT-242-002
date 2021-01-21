@@ -55,7 +55,7 @@ CREATE TABLE IF NOT EXISTS `City` (
   PRIMARY KEY (`CityID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table jtrent238_cpt_242_datadictonary.City: ~0 rows (approximately)
+-- Dumping data for table jtrent238_cpt_242_datadictonary.City: ~539 rows (approximately)
 /*!40000 ALTER TABLE `City` DISABLE KEYS */;
 INSERT INTO `City` (`CityID`, `CityName`, `CityState`, `CityZip`, `CityCounty`) VALUES
 	(0, 'Alcolu', 'SC', 29001, 'Clarendon\r'),
@@ -607,6 +607,10 @@ CREATE TABLE IF NOT EXISTS `Collection` (
   `ColAvailable` binary(1) NOT NULL,
   `ColPageCount` int(11) NOT NULL,
   `ColPrice` int(11) NOT NULL COMMENT 'Purchace/replacement cost',
+  `PubID` int(11) NOT NULL,
+  `LangID` int(11) NOT NULL,
+  `ColDate` date NOT NULL COMMENT 'Date of aquisition',
+  `MediaCode` int(11) NOT NULL,
   PRIMARY KEY (`ColID`),
   KEY `TtlID` (`TtlID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -618,7 +622,8 @@ CREATE TABLE IF NOT EXISTS `Collection` (
 -- Dumping structure for table jtrent238_cpt_242_datadictonary.Genre
 CREATE TABLE IF NOT EXISTS `Genre` (
   `GenreCode` char(2) NOT NULL COMMENT 'Genre abbrev code',
-  `Genre` varchar(20) NOT NULL
+  `Genre` varchar(20) NOT NULL,
+  `TitleID` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table jtrent238_cpt_242_datadictonary.Genre: ~0 rows (approximately)
@@ -658,7 +663,8 @@ CREATE TABLE IF NOT EXISTS `Loan` (
 -- Dumping structure for table jtrent238_cpt_242_datadictonary.Media
 CREATE TABLE IF NOT EXISTS `Media` (
   `MediaCode` char(5) NOT NULL,
-  `MediaDesc` varchar(20) NOT NULL
+  `MediaDesc` varchar(20) NOT NULL,
+  `TermID` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table jtrent238_cpt_242_datadictonary.Media: ~0 rows (approximately)
@@ -668,7 +674,7 @@ CREATE TABLE IF NOT EXISTS `Media` (
 -- Dumping structure for table jtrent238_cpt_242_datadictonary.Person
 CREATE TABLE IF NOT EXISTS `Person` (
   `PerID` int(11) NOT NULL,
-  `PerStatus` char(1) NOT NULL COMMENT 'Person Standing',
+  `PerStatus` enum('0','1','2','3','4') NOT NULL COMMENT 'Person Standing',
   `PerLname` varchar(25) NOT NULL,
   `PerFname` varchar(25) NOT NULL,
   `PerMid` varchar(25) NOT NULL,
@@ -678,7 +684,7 @@ CREATE TABLE IF NOT EXISTS `Person` (
   `PerDOB` date NOT NULL COMMENT 'Date of Birth',
   `PerExpire` date NOT NULL COMMENT 'Expiration Date',
   `PerEnroll` date NOT NULL COMMENT 'Patron join date',
-  `PerGender` char(1) NOT NULL COMMENT 'M or F',
+  `PerGender` enum('M','F') NOT NULL COMMENT 'M or F',
   `PerResID` int(11) NOT NULL COMMENT 'Responsible Person',
   PRIMARY KEY (`PerID`),
   KEY `Person` (`PerResID`),
@@ -696,6 +702,9 @@ CREATE TABLE IF NOT EXISTS `Publisher` (
   `PubName` varchar(50) NOT NULL,
   `PubPhone` varchar(50) NOT NULL,
   `AddID` int(11) NOT NULL,
+  `PubEmail` varchar(15) NOT NULL COMMENT 'Publisher Email',
+  `PerContact` varchar(15) NOT NULL COMMENT 'Contact Person',
+  `PerSales` varchar(15) NOT NULL COMMENT 'Sales Person',
   PRIMARY KEY (`PubID`),
   KEY `AddID` (`AddID`),
   CONSTRAINT `AddID` FOREIGN KEY (`AddID`) REFERENCES `Address` (`AddID`)
@@ -704,6 +713,18 @@ CREATE TABLE IF NOT EXISTS `Publisher` (
 -- Dumping data for table jtrent238_cpt_242_datadictonary.Publisher: ~0 rows (approximately)
 /*!40000 ALTER TABLE `Publisher` DISABLE KEYS */;
 /*!40000 ALTER TABLE `Publisher` ENABLE KEYS */;
+
+-- Dumping structure for table jtrent238_cpt_242_datadictonary.Rating
+CREATE TABLE IF NOT EXISTS `Rating` (
+  `RatCode` int(11) NOT NULL,
+  `RatDesc` varchar(50) NOT NULL,
+  `RatMinAge` int(11) NOT NULL,
+  PRIMARY KEY (`RatCode`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Dumping data for table jtrent238_cpt_242_datadictonary.Rating: ~0 rows (approximately)
+/*!40000 ALTER TABLE `Rating` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Rating` ENABLE KEYS */;
 
 -- Dumping structure for table jtrent238_cpt_242_datadictonary.State
 CREATE TABLE IF NOT EXISTS `State` (
@@ -768,15 +789,47 @@ INSERT INTO `State` (`StaID`, `StaName`, `StaAbbr`) VALUES
 	(49, 'WYOMING', 'WY');
 /*!40000 ALTER TABLE `State` ENABLE KEYS */;
 
+-- Dumping structure for table jtrent238_cpt_242_datadictonary.Term
+CREATE TABLE IF NOT EXISTS `Term` (
+  `TermLength` int(11) NOT NULL COMMENT 'Number of days',
+  `TermLateFee` int(11) NOT NULL COMMENT 'Late Fee (per day)'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Dumping data for table jtrent238_cpt_242_datadictonary.Term: ~0 rows (approximately)
+/*!40000 ALTER TABLE `Term` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Term` ENABLE KEYS */;
+
 -- Dumping structure for table jtrent238_cpt_242_datadictonary.Title
 CREATE TABLE IF NOT EXISTS `Title` (
   `TtlID` int(10) NOT NULL,
-  `GenreCode` int(11) NOT NULL
+  `GenreCode` int(11) NOT NULL,
+  `RatCode` int(11) NOT NULL,
+  `TtlAuthor` int(11) NOT NULL,
+  `TtlTitle` varchar(50) NOT NULL,
+  `TtlSubTitle` varchar(50) NOT NULL,
+  `PubID` varchar(50) NOT NULL,
+  `TtlDate` date NOT NULL,
+  `TtlVersion` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table jtrent238_cpt_242_datadictonary.Title: ~0 rows (approximately)
 /*!40000 ALTER TABLE `Title` DISABLE KEYS */;
 /*!40000 ALTER TABLE `Title` ENABLE KEYS */;
+
+-- Dumping structure for table jtrent238_cpt_242_datadictonary.Waitlist
+CREATE TABLE IF NOT EXISTS `Waitlist` (
+  `WaitID` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Autonumber',
+  `PerID` int(11) NOT NULL,
+  `TtlID` int(11) NOT NULL,
+  `WaitDate` date NOT NULL,
+  `WaitNotify` date NOT NULL,
+  `WaitActive` enum('Y','N') NOT NULL,
+  PRIMARY KEY (`WaitID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Dumping data for table jtrent238_cpt_242_datadictonary.Waitlist: ~0 rows (approximately)
+/*!40000 ALTER TABLE `Waitlist` DISABLE KEYS */;
+/*!40000 ALTER TABLE `Waitlist` ENABLE KEYS */;
 
 -- Dumping structure for table jtrent238_cpt_242_datadictonary.ZipCode
 CREATE TABLE IF NOT EXISTS `ZipCode` (

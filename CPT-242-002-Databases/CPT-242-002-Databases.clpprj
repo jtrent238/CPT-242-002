@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<project name="F:\Fall 2019\Fall 2019 - Database (CPT-242-002)\CPT-242-002-Databases\CPT-242-002-Databases.clpprj">
+ <settings>
+  <PM_URL><![CDATA[http://localhost/CPT-242-002/]]></PM_URL>
+  <PM_HOME_URL><![CDATA[http://localhost/CPT-242-002/]]></PM_HOME_URL>
+  <PM_LIBS><![CDATA[]]></PM_LIBS>
+  <PM_FTP_CONNECTION><![CDATA[]]></PM_FTP_CONNECTION>
+  <PM_FTP_DIR><![CDATA[]]></PM_FTP_DIR>
+  <PM_FTP_UPLOAD_ON_SAVE><![CDATA[INT:0]]></PM_FTP_UPLOAD_ON_SAVE>
+ </settings>
+ <removed value=";"/>
+ <added value=""/>
+ <lastopfiles>
+  <file name="F:\Fall 2019\Fall 2019 - Database (CPT-242-002)\CPT-242-002-Databases\cpt_242_002_datadictionary.sql"/>
+  <file name="F:\Fall 2019\Fall 2019 - Database (CPT-242-002)\CPT-242-002-Databases\cpt24202.sql"/>
+  <lastactivefile name=""/>
+ </lastopfiles>
+ <todoblock/>
+ <dbgurls/>
+ <filescache>
+  <file name="F:\Fall 2019\Fall 2019 - Database (CPT-242-002)\CPT-242-002-Databases\normalization_exercise_ii.sql" crc="1573235438000"/>
+  <file name="F:\Fall 2019\Fall 2019 - Database (CPT-242-002)\CPT-242-002-Databases\cpt_242_002_datadictionary.sql" crc="1574789858000"/>
+  <file name="F:\Fall 2019\Fall 2019 - Database (CPT-242-002)\CPT-242-002-Databases\cpt24202.sql" crc="1574789772000"/>
+ </filescache>
+</project>
